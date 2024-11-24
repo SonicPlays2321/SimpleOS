@@ -1,0 +1,28 @@
+import tkinter as tk
+from tkinter import messagebox
+import webbrowser
+
+class FakeWindows:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Fake Windows OS")
+        self.master.geometry("800x600")
+        self.logged_in = False
+
+        self.login_frame = tk.Frame(self.master)
+        self.login_frame.pack(pady=20)
+
+        self.label = tk.Label(self.login_frame, text="Enter Password:")
+        self.label.pack()
+
+        self.password_entry = tk.Entry(self.login_frame, show="*")
+        self.password_entry.pack()
+
+        self.login_button = tk.Button(self.login_frame, text="Logon", command=self.logon)
+        self.login_button.pack(pady=10)
+
+        self.shutdown_button = tk.Button(self.master, text="Shutdown", command=self.shutdown, state=tk.DISABLED)
+        self.shutdown_button.pack(pady=10)
+
+        self.browser_button = tk.Button(self.master, text="Open Browser", command=self.open_browser, state=tk.DISABLED)
+        self.browser_button.pack(pady=10)
